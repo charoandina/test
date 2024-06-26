@@ -309,6 +309,13 @@ async function init() {
 function handleSuccess(stream) {
     currentStream = stream;
     video.srcObject = stream;
+    video.onloadedmetadata = () => {
+        // Ajustar el tamaño del canvas cuando el video esté listo
+        const videoAspectRatio = video.videoWidth / video.videoHeight;
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    };
 }
 
 function redoPhoto() {
@@ -331,18 +338,10 @@ function rotateCamera() {
 }
 
 snap.addEventListener("click", function() {
-    // Ajusta el tamaño del canvas antes de dibujar la imagen
-    const videoAspectRatio = video.videoWidth / video.videoHeight;
+    // Asegurarse de que el canvas mantenga la proporción del video
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
     
-    // Mantén el tamaño del canvas en la proporción original del video
-    if (videoAspectRatio > 1) {
-        canvas.width = 1280;
-        canvas.height = 1280 / videoAspectRatio;
-    } else {
-        canvas.height = 720;
-        canvas.width = 720 * videoAspectRatio;
-    }
-
     // Dibuja la imagen en el canvas, asegurando que no se recorte
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
     
