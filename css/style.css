@@ -472,7 +472,6 @@ h1{
     width: 100%;
     max-width: 600px; /* Ajusta según tus necesidades */
     aspect-ratio: 4 / 3; /* Ajustado para la proporción de la cámara frontal */
-    border: 1px solid #ccc;
     display: flex;
     justify-content: center;
     align-items: center;
