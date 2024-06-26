@@ -312,7 +312,7 @@ function handleSuccess(stream) {
 }
 
 function redoPhoto() {
-    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    context.clearRect(0, 0, canvas.width, canvas.height);
     video.classList.remove('hidden');
     snap.classList.remove('hidden');
     buttonsAfterShoot.classList.add('hidden');
@@ -333,10 +333,16 @@ function rotateCamera() {
 snap.addEventListener("click", function() {
     // Ajusta el tamaño del canvas antes de dibujar la imagen
     const videoAspectRatio = video.videoWidth / video.videoHeight;
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoWidth / videoAspectRatio;
+    const canvasWidth = video.videoWidth;
+    const canvasHeight = video.videoHeight;
     
-    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    // Ajusta el tamaño del canvas según las dimensiones del video
+    canvas.width = canvasWidth;
+    canvas.height = canvasHeight;
+
+    // Dibuja la imagen en el canvas, asegurando que no se recorte
+    context.drawImage(video, 0, 0, canvasWidth, canvasHeight);
+    
     video.classList.add('hidden');
     snap.classList.add('hidden');
     buttonsAfterShoot.classList.remove('hidden');
