@@ -312,12 +312,12 @@ function handleSuccess(stream) {
 }
 
 function redoPhoto() {
-    context.drawImage(video, 0, 0, 600, 440);
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
     video.classList.remove('hidden');
     snap.classList.remove('hidden');
     buttonsAfterShoot.classList.add('hidden');
     canvas.classList.add('hidden');
-    rotateButton.classList.remove('hidden')
+    rotateButton.classList.remove('hidden');
     init();
 }
 
@@ -331,14 +331,18 @@ function rotateCamera() {
 }
 
 snap.addEventListener("click", function() {
-    context.drawImage(video, 0, 0, 600, 440);
+    // Ajusta el tamaño del canvas antes de dibujar la imagen
+    const videoAspectRatio = video.videoWidth / video.videoHeight;
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoWidth / videoAspectRatio;
+    
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
     video.classList.add('hidden');
     snap.classList.add('hidden');
     buttonsAfterShoot.classList.remove('hidden');
     canvas.classList.remove('hidden');
     rotateButton.classList.add('hidden');
     stopCamera();
-
 });
 
 function stopCamera() {
