@@ -293,7 +293,7 @@ const rotateButton = document.getElementById('rotate-button');
 
 const constraints = {
     video: {
-        facingMode: { exact: 'environment' } // Configura para usar cámara trasera
+        facingMode: 'user'
     }
 };
 
@@ -333,7 +333,7 @@ function rotateCamera() {
         currentStream.getTracks().forEach(track => track.stop());
     }
     useFrontCamera = !useFrontCamera;
-    constraints.video.facingMode = useFrontCamera ? 'user' : { exact: 'environment' };
+    constraints.video.facingMode = useFrontCamera ? 'user' : 'environment';
     init();
 }
 
