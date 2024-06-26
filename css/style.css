@@ -475,7 +475,7 @@ h1{
 
     width: 100%;
     max-width: 600px; /* Puedes ajustar este valor según tus necesidades */
-    aspect-ratio: 1 / 1; /* Ajusta esto para que coincida con el aspecto de la cámara */
+    aspect-ratio: 4 / 3; /* Ajusta esto para que coincida con el aspecto de la cámara */
     border: 1px solid #ccc;
     display: flex;
     justify-content: center;
