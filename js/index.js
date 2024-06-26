@@ -277,7 +277,7 @@ function takePhoto() {
     document.getElementById('instructions-scan').classList.add('hidden');
     document.getElementById('take-photo').classList.remove('hidden');
     init();
-  }
+}
 
 'use strict';
 
@@ -288,7 +288,7 @@ const errorMsgElement = document.querySelector('span#errorMsg');
 const buttonsAfterShoot = document.getElementById('buttonsAfterShoot');
 const context = canvas.getContext('2d');
 let currentStream;
-let useFrontCamera = false;
+let useFrontCamera = false; // Inicia con la cámara trasera activada
 const rotateButton = document.getElementById('rotate-button');
 
 const constraints = {
@@ -324,7 +324,6 @@ function redoPhoto() {
     snap.classList.remove('hidden');
     buttonsAfterShoot.classList.add('hidden');
     canvas.classList.add('hidden');
-    rotateButton.classList.remove('hidden');
     init();
 }
 
@@ -349,7 +348,6 @@ snap.addEventListener("click", function() {
     snap.classList.add('hidden');
     buttonsAfterShoot.classList.remove('hidden');
     canvas.classList.remove('hidden');
-    rotateButton.classList.add('hidden');
     stopCamera();
 });
 
