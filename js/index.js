@@ -344,7 +344,7 @@ snap.addEventListener("click", function() {
     
     // Dibuja la imagen en el canvas, asegurando que no se recorte
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
-    
+    rotateButton.classList.add('hidden')
     video.classList.add('hidden');
     snap.classList.add('hidden');
     buttonsAfterShoot.classList.remove('hidden');
