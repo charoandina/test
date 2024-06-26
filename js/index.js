@@ -288,12 +288,12 @@ const errorMsgElement = document.querySelector('span#errorMsg');
 const buttonsAfterShoot = document.getElementById('buttonsAfterShoot');
 const context = canvas.getContext('2d');
 let currentStream;
-let useFrontCamera = true;
+let useFrontCamera = false; // Inicialmente configurado para usar cámara trasera
 const rotateButton = document.getElementById('rotate-button');
 
 const constraints = {
     video: {
-        facingMode: 'user'
+        facingMode: { exact: 'environment' } // Configura para usar cámara trasera
     }
 };
 
@@ -312,8 +312,15 @@ function handleSuccess(stream) {
     video.onloadedmetadata = () => {
         // Ajustar el tamaño del canvas cuando el video esté listo
         const videoAspectRatio = video.videoWidth / video.videoHeight;
+        const canvasWrapper = document.getElementById('canvas-wrapper');
+        const wrapperWidth = canvasWrapper.clientWidth;
+        const wrapperHeight = wrapperWidth / videoAspectRatio;
+
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
+        canvas.style.width = `${wrapperWidth}px`;
+        canvas.style.height = `${wrapperHeight}px`;
+
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
     };
 }
@@ -333,7 +340,7 @@ function rotateCamera() {
         currentStream.getTracks().forEach(track => track.stop());
     }
     useFrontCamera = !useFrontCamera;
-    constraints.video.facingMode = useFrontCamera ? 'user' : 'environment';
+    constraints.video.facingMode = useFrontCamera ? 'user' : { exact: 'environment' }; // Alternar entre cámara frontal y trasera
     init();
 }
 
