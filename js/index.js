@@ -293,7 +293,7 @@ const rotateButton = document.getElementById('rotate-button');
 
 const constraints = {
     video: {
-        facingMode: 'user'
+        width: 1280, height: 720, facingMode: useFrontCamera ? 'user' : 'environment'
     }
 };
 
