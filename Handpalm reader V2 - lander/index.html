@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handpalm reader V2 - lander</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+</head>
+<body class="poppins-regular">
+
+
+
+<!--MAIN CONTENT-->
+<div class="container main-container" id="main-container">
+    <h1 id="title">Discover your future</h1>
+    <h2>with palmistry guide</h2>
+
+    <img src="img/palm-index-5828c844.jpg" alt="" class="main-container-img">
+
+    <div class="main-chips-container">
+        <div class="main-chips">
+            <i class="fa fa-clock-o" aria-hidden="true"></i>
+            <p>1-min quiz</p>
+        </div>
+
+        <div class="main-chips">
+            <i class="fa fa-square-o" aria-hidden="true"></i>
+            <p>Palm scan</p>
+        </div>
+
+        <div class="main-chips">
+            <i class="fa fa-gift" aria-hidden="true"></i>
+            <p>Personalized guide</p>
+        </div>
+    </div>
+
+    <button class="poppins-semibold main-button pulse" onclick="startQuiz()">Let's Start</button>
+</div>
+
+<!--QUIZ-->
+
+<div class="container quiz-container hidden" id="quiz-container">
+
+    <div class="question-container hidden" id="gender-question">
+        <h2 class="question-h2">What is your gender?</h2>
+        <p class="question-p">This highlights the duality of your masculine and feminine energies</p>
+        <div class="gender-options">
+            <div class="gender-option" onclick="selectGender('men')">
+                <img src="img/male-6b36c507.png" alt="" >
+                <p class="male">Male</p>
+            </div>
+
+            <div class="gender-option" onclick="selectGender('women')">
+                <img src="img/female-3d5d7a68.png" alt="">
+                <p class="female">Female</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="question-container hidden" id="relationship-question">
+        <h2 class="question-h2">Your relationship status:</h2>
+        <div class="options">
+            <div class="option" onclick="thirdQuestion()">
+                <img src="img/single.png" alt="">
+                <p>Single</p>
+            </div>
+
+            <div class="option" onclick="thirdQuestion()">
+                <img src="img/inarelationship.png" alt="">
+                <p>In a relationship</p>
+            </div>
+
+            <div class="option" onclick="thirdQuestion()">
+                <img src="img/married.png" alt="">
+                <p>Married</p>
+            </div>
+
+            <div class="option" onclick="thirdQuestion()">
+                <img src="img/complicated.png" alt="">
+                <p>Complicated</p>
+            </div>
+
+            <div class="option" onclick="thirdQuestion()">
+                <img src="img/lookingforsolumate.png" alt="">
+                <p>Looking for a soul mate</p>
+            </div>
+
+            <div class="option" onclick="thirdQuestion()">
+                <img src="img/other.png" alt="">
+                <p>Other</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="question-container hidden" id="hand-question">
+        <h2 class="question-h2">Which hand do you primarily use?</h2>
+        <div class="options">
+            <div class="option" onclick="fourthQuestion()">
+                <img src="img/righthand.png" alt="" >
+                <p>Right</p>
+            </div>
+
+            <div class="option" onclick="fourthQuestion()">
+                <img src="img/lefthand.png" alt="">
+                <p>Left</p>
+            </div>
+
+            <div class="option" onclick="fourthQuestion()">
+                <img src="img/other.png" alt="">
+                <p>Both</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="question-container hidden" id="goal-question">
+        <h2 class="question-h2">What is your primary goal or curiosity from palm reading?</h2>
+        <div class="options">
+            <div class="option" onclick="firstAchievement()">
+                <img src="img/understandrelationship.png" alt="">
+                <p>Understand my relationships & emotions</p>
+            </div>
+
+            <div class="option" onclick="firstAchievement()">
+                <img src="img/gaininsights.png" alt="">
+                <p>Gain insights into my intellect & decision-making</p>
+            </div>
+
+            <div class="option" onclick="firstAchievement()">
+                <img src="img/learnhealth.png" alt="">
+                <p>Learn about my health & vitality prospects</p>
+            </div>
+
+            <div class="option" onclick="firstAchievement()">
+                <img src="img/career.png" alt="">
+                <p>Uncover insights about my career & destiny</p>
+            </div>
+
+            <div class="option" onclick="firstAchievement()">
+                <img src="img/curiosity.png" alt="">
+                <p>General curiosity</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--FIRST ACHIEVEMENT-->
+<div class="hidden achievement-bg" id="first-achievement">
+    <div class="firstach-container container">
+        <h2>Great! You've just set your first goal!</h2>
+        <img src="img/palm-info-b8e14795.png" alt="" class="fachievement-img">
+        <p>Let’s keep going so we can get to know you better</p>
+        <button class="poppins-semibold fachievement-button" onclick="fifthQuestion()">Continue</button>
+    </div>
+</div>
+
+<!--CONTINUES QUIZ-->
+
+<div class="container quiz-container hidden" id="quiz-container2">
+    <div class="question-container hidden" id="birth-question">
+        <h2 class="question-h2">What’s your date of birth?</h2>
+        <p class="question-p">Your birth date reveals your fundamental personality traits, needs, and desires</p>
+        <form class="form-options" onsubmit="return validateForm(event)">
+            <div class="select-container">
+                <!-- Select month -->
+                <select name="month" id="month-select" required class="poppins-regular form-option">
+                    <option value="">Month</option>
+                </select>
+                
+                <!-- Select day -->
+                <select name="day" id="day-select" required class="poppins-regular form-option">
+                    <option value="">Day</option>
+                </select>
+                
+                <!-- Select year -->
+                <select name="year" id="year-select" required class="poppins-regular form-option">
+                    <option value="">Year</option>
+                </select>
+            </div>
+            <button type="submit"  class="poppins-semibold fachievement-button">Continue</button>
+        </form>
+    </div>  
+
+    <div class="question-container hidden" id="palm-question">
+        <h2 class="question-h2">Observe your palm <br> How would you describe the majority of the lines?</h2>
+        <div class="options">
+            <div class="option-noimg" onclick="secondAchievement()">
+                <p>Deep and clear</p>
+            </div>
+
+            <div class="option-noimg" onclick="secondAchievement()">
+                <p>Faint</p>
+            </div>
+
+            <div class="option-noimg" onclick="secondAchievement()">
+                <p>Broken or chained</p>
+            </div>
+
+            <div class="option-noimg" onclick="secondAchievement()">
+                <p>A mixture of the above</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--SECOND ACHIEVEMENT-->
+<div class="hidden achievement-bg" id="second-achievement">
+    <div class="secondach-container container">
+        <img src="img/palm-info-b8e14795.png" alt="" class="sachievement-img">
+        <h2>Your palms hold a wealth of information about your fate, 
+            personality, and potential</h2>
+        <button class="poppins-semibold fachievement-button" onclick="seventhQuestion()">Continue</button>
+    </div>
+</div>
+
+<!--CONTINUES QUIZ-->
+
+<div class="container quiz-container hidden" id="quiz-container3">
+    <div class="question-container hidden" id="fingers-question">
+        <h2 class="question-h2">Look at your fingers <br> How would you describe their length compared to your palm?</h2>
+        <div class="options">
+            <div class="option-noimg" onclick="eighthQuestion()">
+                <p>They seem long</p>
+            </div>
+
+            <div class="option-noimg" onclick="eighthQuestion()">
+                <p>They seem short</p>
+            </div>
+
+            <div class="option-noimg" onclick="eighthQuestion()">
+                <p>About average</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="question-container hidden" id="leftpalm-question">
+        <h2 class="question-h2">Look at your left palm <br> Compare the lengths of your index and ring fingers:</h2>
+        <div class="options">
+            <div class="option-noimg" onclick="ninthQuestion()">
+                <p>Index finger is longer</p>
+            </div>
+
+            <div class="option-noimg" onclick="ninthQuestion()">
+                <p>Ring finger is longer</p>
+            </div>
+
+            <div class="option-noimg" onclick="ninthQuestion()">
+                <p>They are more or less equal</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="question-container hidden" id="gainedpalm-question">
+        <h2 class="question-h2">Have you ever gained insights from palm reading?</h2>
+        <div class="options">
+            <div class="option-noimg" onclick="tenthQuestion()">
+                <p>Yes, by studying it myself</p>
+            </div>
+
+            <div class="option-noimg" onclick="tenthQuestion()">
+                <p>Yes, with the guidance of a professional</p>
+            </div>
+
+            <div class="option-noimg" onclick="tenthQuestion()">
+                <p>No, I’ve never tried palm reading</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="question-container hidden" id="thinkgoals-question">
+        <h2 class="question-h2">When you think about your goals, <br>
+            how do you feel?</h2>
+        <div class="options">
+            <div class="option-noimg" onclick="thirdAchievement()">
+                <p>Optimistic! They are totally doable — with some guidance</p>
+            </div>
+
+            <div class="option-noimg" onclick="thirdAchievement()">
+                <p>Cautious. I’ve struggled before, but I’m hopeful</p>
+            </div>
+
+            <div class="option-noimg" onclick="thirdAchievement()">
+                <p>A little anxious, honestly</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--THIRD ACHIEVEMENT-->
+<div class="hidden achievement-bg" id="third-achievement">
+    <div class="thirdach-container container">
+        <h3>We've already healped <span id="random-number"></span> <span id="gender"></span>  with a <span id="zodiac-sign"></span> Sun sign to understand their relationships and emotions. And we're excited to offer you the same insightful support!</h3>
+        <div class="loading-container">
+            <div class="circular-progress">
+
+            </div>
+            <span class="progress-value">0%</span>
+            <span class="progress-text">Conecting to data base</span>
+            <span class="progress-text">....</span>
+        </div>
+        <button class="poppins-semibold fachievement-button hidden" id="last-question-button" onclick="lastQuestion()">Continue</button>
+    </div>
+</div>
+
+<!--LAST QUESTION QUIZ-->
+<div class="container quiz-container hidden" id="quiz-container4">
+    <div class="question-container hidden" id="line-question">
+        <h2 class="question-h2">Which palm line is the most important for you to analyze?</h2>
+        <div class="options">
+            <div class="option" onclick="scanIntro()">
+                <img src="img/heartline.png" alt="">
+                <p>Heart line</p>
+            </div>
+
+            <div class="option" onclick="scanIntro()">
+                <img src="img/headline.png" alt="">
+                <p>Head line</p>
+            </div>
+
+            <div class="option" onclick="scanIntro()">
+                <img src="img/lifeline.png" alt="">
+                <p>Life line</p>
+            </div>
+
+            <div class="option" onclick="scanIntro()">
+                <img src="img/moneyline.png" alt="">
+                <p>Money line</p>
+            </div>
+
+            <div class="option" onclick="scanIntro()">
+                <img src="img/marriageline.png" alt="">
+                <p>Marriage line</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--LET'S SCAN YOUR PALM-->
+
+<div class="container quiz-container hidden" id="scan-container">
+    <div class="question-container hidden" id="scan-intro">
+        <img src="img/letscanyourpalm.png" alt="">
+
+        <h2 class="question-h2">Let’s Scan Your Palm</h2>
+
+        <p>Follow the on-screen instructions to allow us to explore the unique lines of your palm.</p>
+        <p>This will unveil your future prospects and unravel the hidden mysteries of your destiny!</p>
+
+        <button class="poppins-semibold fachievement-button" onclick="showInstructions()">Let's Do It</button>
+    </div>
+
+    <div class="question-container hidden" id="instructions-scan">        
+        <h2 class="question-h2">Take your left palm picture as instructed</h2>
+        <img src="img/704020a1-e032-4e4a-8680-418d0be82d9c.png" alt="" class="instructions-img">
+
+        <button class="poppins-semibold fachievement-button" onclick="takePhoto()">Take a Picture</button>
+        <p class="instructions-p">We prioritize your privacy. Any non-identifiable data temporarily
+            stored on our secure servers is swiftly deleted to maintain your
+            anonymity.</p>
+    </div>
+</div>
+
+<!--TAKE PHOTO CAMERA-->
+<div id="take-photo" class="container photo-container hidden">
+    
+    <!-- Stream video via webcam -->
+    <div class="video-wrap">
+        <video id="video" class="video" playsinline autoplay></video>
+    </div>
+
+    <!-- Trigger canvas web API -->
+    <div class="controller" id="controller">
+        <button id="snap" class="camera-button"><i class="fa fa-camera" aria-hidden="true"></i></button>
+        <button onclick="rotateCamera()" class="rotate-button" id="rotate-button"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+    </div>
+
+    <!-- Webcam video snapshot -->
+    <div class="canvas-container">
+        <h2 id="photo-title" class="hidden">Scanning your palm</h2>
+        <div id="canvas-wrapper" style="position: relative; width: 100%;">
+            <canvas id="canvas" width="600" height="800" class="hidden canvas"></canvas>
+            <div class="scanning-bar hidden" id="scanning-bar"></div>
+        </div>
+    </div>
+    <div class="hidden buttons-after-shoot" id="buttonsAfterShoot">
+        <button onclick="redoPhoto()" class="refresh-button"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+        <button class="start-button poppins-bold" id="start-scanning" onclick="startScanning()"><i class="fa fa-check" aria-hidden="true"></i></button>    </div>
+</div>
+
+<!--SCANNING YOUR PALM-->
+<div class="hidden achievement-bg" id="scanning-palm">
+    <div class="container scanningpalm-container" id="scanningpalm-info">
+        <div class="scanning-data-container">
+            <h2>Just a moment, please...</h2>
+            <h2>We're crafting your personalized palmistry reading.</h2>
+            <div class="checklist-container">
+                <div class="checklist-item">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                    <p>Analyzing your palm lines...</p>
+                </div>
+
+                <div class="checklist-item">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                    <p>Studying your fingers...</p>
+                </div>
+
+                <div class="checklist-item">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                    <p>Highlighting strengths and passions...</p>
+                </div>
+
+                <div class="checklist-item">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                    <p>Identifying personality traits...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="palminfo2 hidden container" id="palminfo2">
+        <h2>We have prepared a detailer palmistry reading #CPR-<span id="random-reading"></span> crafted exclusively for you.</h2>
+        <p>From what we've gathered, your personalized palmistry reading holds a <span class="bold">treasure trove of insights about your live life, emotional journey, and potential challenges ahead.</span></p>
+        <button class="poppins-semibold palminfo-button" onclick="seeResult()">Continue</button>
+    </div>
+
+    <div class="resultprice-container hidden container" id="resultprice-container">
+        <h2 class="result-h2">Choose Your Price</h2>
+        <div class="text-container">
+            <h3>YOR SATISFACTION IS OUR CORE FOCUS</h3>
+            <p>We've helped <span class="poppins-bold"> thousands of <span id="zodiac-sign2"></span> people to gain insights into their intellect & decision-making</span>, and we want to help you too.</p>
+        </div>
+    
+        <div class="text-container">
+            <h3>YOUR SAVINGS ARE IMPORTANT TO US</h3>
+            <p>While the actual trial cost to us is €5.5*, we encourage you to select the amount you find comfortable for you.</p>
+        </div>
+       
+        <div class="price-container">
+            <div class="price">€1</div>
+            <div class="price">€3.5</div>
+            <div class="price">€5.5</div>
+        </div>
+    
+        <p class="extra-info">This option will help us support those who need to select the lowest trial prices!</p>
+        <button class="poppins-bold result-button" onclick="seePriceResult()">See my results</button>
+    </div>
+
+    <div class="hidden achievement-bg" id="last-result">
+        <div class="thirdach-container container">
+            <h3>Loading the report</h3>
+            <div class="loading-container2">
+                <div class="circular-progress2">
+                </div>
+                <span class="progress-value2">0%</span>
+            </div>
+            <button class="poppins-bold last-result-button hidden" id="see-results-button" onclick="seeLastResult()">See my results</button>
+        </div>
+    </div>
+
+    <div class="result-container hidden container" id="result-container">
+        <div class="timer-container">
+            <i class="fa fa-clock-o" aria-hidden="true"></i>
+            <p>Personalized plan reserved for <span id="timer">10:00</span></p>
+        </div>
+
+        <div class="title-result">
+            <h2>Transform your life with the power of Palmistry today!</h2>
+            <img src="img/hand-b3691eb1.jpg" alt="">
+        </div>
+
+        <div class="unlock-container">
+            <h3>Unlock your personalized path to clarity and love now!</h3>
+            <div class="specialoffer-container">
+                <div class="special-offer">SPECIAL OFFER</div>
+
+                <h3>Personalized reading for <span>€5.5</span></h3>
+                <div class="flexbox total-today">
+                    <p>Total today:</p>
+                    <p><span class="bold">just €5.5</span></p>
+                </div>
+                <div class="flexbox">
+                    <p>3-days trial including personal reading</p>
+                    <p><span class="bold"><span class="old-price">€29</span> €0</span></p>
+                </div>
+            </div>
+            <button class="poppins-bold getreading-button2 pulse" onclick="showPopUp()">GET MY READING</button>
+        </div>
+        
+        <div class="users-container">
+            <img src="img/users-photo-f77d7e7c.png" alt="">
+            <h3>1.2M + users</h3>
+            <p>trust us for their palm reading insights!</p>
+        </div>
+
+        <button class="poppins-regular pay-button"><i class="fa fa-shield" aria-hidden="true"></i>Pay safe & secure</button>
+        <img src="img/paycards.png" alt="" class="img-pay">
+
+        <div class="lines-container">
+            <h3>Unlock the Secrets of Your Hands and Fingers</h3>
+            <p>Your hands and fingers are like a personal storybook, with each line representing a chapter of your life.</p>
+            <div class="line-card">
+                <img src="img/life-line.png" alt="">
+                <p><span class="green">Life line</span> is a symbol of vitality, holds clues about your health, energy, and passion for life</p>
+            </div>
+
+            <div class="line-card">
+                <img src="img/head-line.png" alt="">
+                <p><span class="blue">Head line</span> reflects your intellectual pursuits and mental strengths, showcasing how you think and learn</p>
+            </div>
+
+            <div class="line-card">
+                <img src="img/marriage-line.png" alt="">
+                <p><span class="purple">Marriage line</span> provides a glimpse into your relationships, romantic partnerships, and potential for marriage</p>
+            </div>
+
+            <div class="lines-horizontal">
+                <div class="line-horizontal">
+                    <img src="img/love-line.png" alt="">
+                    <p><span class="red">Love line</span> reveals insights into your romantic journey, mapping your heart’s desires</p>
+                </div>
+
+                <div class="line-horizontal">
+                    <img src="img/money-line.png" alt="">
+                    <p><span class="yellow">Money line</span> maps your financial potential and your approach to wealth management</p>
+                </div>
+            </div>
+
+            <button class="poppins-bold getreading-button2 pulse" onclick="showPopUp()">GET MY READING</button>
+        </div>
+
+        <div class="user-comments-container">
+            <h3>Here's what our users are saying about us:</h3>
+            <div class="comments-container">
+                <div class="card-comments">
+                    <div class="data-user">
+                        <img src="img/sara-photo-9d5b236b.png" alt="">
+                        <div class="rating-container">
+                            <h4>Sarah J.</h4>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        </div>
+                        <p>10:30 AM</p>
+                    </div>
+                    <p>“Astoundingly precise readings! It's helped me tremendously in understanding both myself and my significant other.”</p>
+                </div>
+
+                <div class="card-comments">
+                    <div class="data-user">
+                        <img src="img/liam-photo-88d4bb94.png" alt="">
+                        <div class="rating-container">
+                            <h4>Liam69</h4>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        </div>
+                        <p>1 day ago</p>
+                    </div>
+                    <p>“They offer a wealth of insights. I've never come across something so accurate in the realm of astrology.”</p>
+                </div>
+
+                <div class="card-comments">
+                    <div class="data-user">
+                        <img src="img/olivia-photo-5a77a006.png" alt="">
+                        <div class="rating-container">
+                            <h4>OliviaSky</h4>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        </div>
+                        <p>3 days ago</p>
+                    </div>
+                    <p>“I followed the advice from my reading for a week, and it really did improve my life. Highly recommend!”</p>
+                </div>
+
+                <button class="poppins-bold getreading-button pulse" onclick="showPopUp()">GET MY READING</button>
+            </div>
+        </div>
+
+        <div class="money-guarantee-container">
+            <img src="img/money-guarantee.png" alt="">
+            <h3>100% Money-Back Guarantee</h3>
+            <p>Our team is dedicated to delivering the best for
+                you. We stand by the quality of our product. If you
+                don't see progress after a week's use, we'll provide
+                a full refund within 14 days.</p>
+        </div>
+    </div>
+</div>
+
+<div class="overlay hidden" id="overlay">
+    <div class="popup hidden" id="popup">
+        <h2>Enter your email and password to discover insights into your love life and emotions</h2>
+        <div class="lastform">
+            <input type="email" placeholder="E-mail" class="poppins-regular">
+            <input type="password" placeholder="Password" class="poppins-regular">
+            <div class="checkbox">
+                <input type="checkbox" name="" id="">
+                <p>I am 18 years old and accept the general terms and conditions and the promotional terms.</p>
+            </div>
+        </div>
+        <button class="poppins-bold last-button">GET MY READING</button>
+    </div>
+</div>
+
+
+<script src="js/index.js"></script>
+</body>
+</html>
