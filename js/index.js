@@ -333,15 +333,18 @@ function rotateCamera() {
 snap.addEventListener("click", function() {
     // Ajusta el tamaño del canvas antes de dibujar la imagen
     const videoAspectRatio = video.videoWidth / video.videoHeight;
-    const canvasWidth = video.videoWidth;
-    const canvasHeight = video.videoHeight;
     
-    // Ajusta el tamaño del canvas según las dimensiones del video
-    canvas.width = canvasWidth;
-    canvas.height = canvasHeight;
+    // Mantén el tamaño del canvas en la proporción original del video
+    if (videoAspectRatio > 1) {
+        canvas.width = 1280;
+        canvas.height = 1280 / videoAspectRatio;
+    } else {
+        canvas.height = 720;
+        canvas.width = 720 * videoAspectRatio;
+    }
 
     // Dibuja la imagen en el canvas, asegurando que no se recorte
-    context.drawImage(video, 0, 0, canvasWidth, canvasHeight);
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
     
     video.classList.add('hidden');
     snap.classList.add('hidden');
