@@ -276,6 +276,7 @@ function showInstructions(){
 function takePhoto() {
     document.getElementById('instructions-scan').classList.add('hidden');
     document.getElementById('take-photo').classList.remove('hidden');
+    useFrontCamera = false; // Inicializa la variable para usar la cámara trasera al iniciar
     init();
 }
 
@@ -288,12 +289,12 @@ const errorMsgElement = document.querySelector('span#errorMsg');
 const buttonsAfterShoot = document.getElementById('buttonsAfterShoot');
 const context = canvas.getContext('2d');
 let currentStream;
-let useFrontCamera = false; // Inicia con la cámara trasera activada
+let useFrontCamera = false; // Variable para controlar la cámara frontal/trasera
 const rotateButton = document.getElementById('rotate-button');
 
 const constraints = {
     video: {
-        width: 1280, height: 720, facingMode: useFrontCamera ? 'user' : 'environment'
+        width: 1280, height: 720, facingMode: useFrontCamera ? 'user' : { exact: 'environment' }
     }
 };
 
@@ -332,7 +333,7 @@ function rotateCamera() {
         currentStream.getTracks().forEach(track => track.stop());
     }
     useFrontCamera = !useFrontCamera;
-    constraints.video.facingMode = useFrontCamera ? 'user' : 'environment';
+    constraints.video.facingMode = useFrontCamera ? 'user' : { exact: 'environment' };
     init();
 }
 
