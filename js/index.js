@@ -352,8 +352,10 @@ snap.addEventListener("click", function() {
     buttonsAfterShoot.classList.remove('hidden');
     canvas.classList.remove('hidden');
     
-    // Ajustar el ancho del scanning-bar
-    scanningBarMoves();
+    // Ajustar el ancho del scanning-bar al ancho del contenido visible en el canvas
+    setTimeout(() => { // Esperar un breve momento para asegurarse de que el contenido se haya renderizado completamente
+        scanningBarMoves();
+    }, 100);
     
     // Detener la cámara
     stopCamera();
@@ -376,10 +378,11 @@ function startScanning() {
 }  
 
 function scanningBarMoves(){
-    const scanningBarWidth = canvas.width; // Obtener el ancho actual del canvas
+    // Calcular el ancho real del contenido visible en el canvas
+    const contentWidth = canvas.getBoundingClientRect().width;
     
     // Aplicar el ancho al scanning-bar
-    scanningBar.style.width = `${scanningBarWidth}px`;
+    scanningBar.style.width = `${contentWidth}px`;
 }
 
 function changingTitle(){
