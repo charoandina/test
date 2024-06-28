@@ -344,20 +344,11 @@ snap.addEventListener("click", function() {
     
     // Dibuja la imagen en el canvas, asegurando que no se recorte
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
-    
-    // Mostrar elementos y ocultar botones después de tomar la foto
-    rotateButton.classList.add('hidden');
+    rotateButton.classList.add('hidden')
     video.classList.add('hidden');
     snap.classList.add('hidden');
     buttonsAfterShoot.classList.remove('hidden');
     canvas.classList.remove('hidden');
-    
-    // Ajustar el ancho del scanning-bar al ancho del contenido visible en el canvas
-    setTimeout(() => { // Esperar un breve momento para asegurarse de que el contenido se haya renderizado completamente
-        scanningBarMoves();
-    }, 100);
-    
-    // Detener la cámara
     stopCamera();
 });
 
@@ -374,15 +365,17 @@ const scanningBar = document.getElementById('scanning-bar');
 function startScanning() {
     buttonsAfterShoot.classList.add('hidden');
     scanningBar.classList.remove('hidden');
-    changingTitle();
+    scanningBarMoves();
+    changingTitle()
 }  
 
 function scanningBarMoves(){
-    // Calcular el ancho real del contenido visible en el canvas
-    const contentWidth = canvas.getBoundingClientRect().width;
-    
-    // Aplicar el ancho al scanning-bar
-    scanningBar.style.width = `${contentWidth}px`;
+    const scanningBarHeight = 8; 
+    const scanningBarTop = 0; 
+    const scanningBarWidth = canvas.offsetWidth; 
+
+    scanningBar.style.top = `${scanningBarTop}px`;
+    scanningBar.style.width = `${scanningBarWidth}px`;
 }
 
 function changingTitle(){

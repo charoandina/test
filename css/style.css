@@ -479,7 +479,7 @@ h1{
 
 .scanning-bar {
     position: absolute;
-    width: 100%;
+    width: 50%;
     height: 8px;
     background: linear-gradient(90deg, #642b72 0%, #c5426e 100%);
     top: 0;
