@@ -372,10 +372,8 @@ function startScanning() {
 function scanningBarMoves(){
     const scanningBarHeight = 8; 
     const scanningBarTop = 0; 
-    const scanningBarWidth = canvas.offsetWidth; 
 
     scanningBar.style.top = `${scanningBarTop}px`;
-    scanningBar.style.width = `${scanningBarWidth}px`;
 }
 
 function changingTitle(){
