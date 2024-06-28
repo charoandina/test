@@ -372,7 +372,7 @@ function startScanning() {
 function scanningBarMoves(){
     const scanningBarHeight = 8; 
     const scanningBarTop = 0; 
-    const scanningBarWidth = canvas.offsetWidth; 
+    const scanningBarWidth = canvas.width;
 
     scanningBar.style.top = `${scanningBarTop}px`;
     scanningBar.style.width = `${scanningBarWidth}px`;
