@@ -461,20 +461,20 @@ h1{
 
 .canvas {
     width: 100%;
-    height: 100%; /* Mantén la proporción correcta */
-    object-fit: contain; /* Asegura que la imagen completa se muestre sin recortes */
+    height: 100%;
+    object-fit: contain; 
 
 }
 
 #canvas-wrapper {
     position: relative;
     width: 100%;
-    max-width: 600px; /* Ajusta según tus necesidades */
-    aspect-ratio: 4 / 3; /* Ajustado para la proporción de la cámara frontal */
+    max-width: 600px; 
+    aspect-ratio: 4 / 3; 
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* Asegura que la imagen no se desborde */
+    overflow: hidden; 
 }
 
 .scanning-bar {
@@ -493,7 +493,7 @@ h1{
         top: 0%;
     }
     100% {
-        top: calc(100% - 8px); /* Asegúrate de restar la altura de la barra de escaneo */
+        top: calc(100% - 8px); 
     }
 }
 

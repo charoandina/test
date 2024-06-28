@@ -344,11 +344,18 @@ snap.addEventListener("click", function() {
     
     // Dibuja la imagen en el canvas, asegurando que no se recorte
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
-    rotateButton.classList.add('hidden')
+    
+    // Mostrar elementos y ocultar botones después de tomar la foto
+    rotateButton.classList.add('hidden');
     video.classList.add('hidden');
     snap.classList.add('hidden');
     buttonsAfterShoot.classList.remove('hidden');
     canvas.classList.remove('hidden');
+    
+    // Ajustar el ancho del scanning-bar
+    scanningBarMoves();
+    
+    // Detener la cámara
     stopCamera();
 });
 
@@ -370,11 +377,9 @@ function startScanning() {
 }  
 
 function scanningBarMoves(){
-    const scanningBarHeight = 8; 
-    const scanningBarTop = 0; 
-    const scanningBarWidth = canvas.width;
-
-    scanningBar.style.top = `${scanningBarTop}px`;
+    const scanningBarWidth = canvas.width; // Obtener el ancho actual del canvas
+    
+    // Aplicar el ancho al scanning-bar
     scanningBar.style.width = `${scanningBarWidth}px`;
 }
 
