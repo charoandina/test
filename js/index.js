@@ -372,8 +372,7 @@ const scanningBar = document.getElementById('scanning-bar');
 function startScanning() {
     buttonsAfterShoot.classList.add('hidden');
     scanningBar.classList.remove('hidden');
-    scanningBarMoves();
-    changingTitle()
+    changingTitle();
 }  
 
 function scanningBarMoves(){
